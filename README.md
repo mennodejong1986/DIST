@@ -37,7 +37,7 @@ The script automatically avoids double calculations (i.e, i vs j, and j vs i) by
 For instance, for individuals 1 and 5, the sum is even (6), and hence the script performs calculations for i=5 and j=1, but not for i=1 and j=5.
 In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script performs calculations for i=1 and j=6, but not for i=6 and j=1.     
 
-# Use distance estimates for population-genetic analyses in SambaR
+# Use distance estimates for population-genetic analyses
 
 The obtained distance-estimates can be used for distance-based population-genetic analyses, such as tree reconstruction, pcoa-analyses and heterozygosity and Hudson Fst estimation.
 To do, make first a dummy dataset in SambaR:
