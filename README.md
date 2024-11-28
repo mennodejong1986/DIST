@@ -32,9 +32,13 @@ line 76: ((: i = : syntax error: operand expected (error token is "= ")
 
 # Parallel usage
 To speed up the calculations, run simulatenously for subsets as such:
+
 ./VCF_calcdist.sh 1 10 &		
+
 ./VCF_calcdist.sh 11 20 &
+
 etc.
+
 IMPORTANT!! If running simulatenously, the flag convertdata should be set to FALSE, and the output files of the data conversion step should already be present.
 
 The script automatically avoids double calculations (i.e, i vs j, and j vs i) by only performing calculations if ( i < j && (i + j)%%2!=0) or ( i > j && (i + j)%%2==0)
