@@ -43,16 +43,27 @@ The obtained distance-estimates can be used for distance-based population-geneti
 To do, make first a dummy dataset in SambaR:
 
 mydf	          <- read.table("popfile.txt",header=TRUE)			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
+
 mymat			      <- matrix(sample(c(0,1),nrow(mydf)*100,replace=TRUE),nrow=nrow(mydf),ncol=100)
+
 rownames(mymat)	<- mydf$name
+
 colnames(mymat)	<- paste("snp",c(1:100),sep="_")	
+
 mygl			      <- as.genlight(mymat)
+
 genlight2sambar(genlight_object="mygl",do_confirm=TRUE)
+
 mydf$pop		    <- NULL
+
 mydf$popcol		  <- NULL
+
 inds			      <- merge(inds,mydf,by="name")
+
 filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)
 
 Next, run the analyses:
+
 add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)
+
 calcdxy()
