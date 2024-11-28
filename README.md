@@ -14,9 +14,13 @@ The genome-wide distance is: d = 0.2x(10^7)/(2x10^9) = 0.001 = 0.1%.
 
 # Usage
 Execute by typing, for example:
+
 dos2unix VCF_calcdist.sh
+
 chmod +x VCF_calcdist.sh
+
 ./VCF_calcdist.sh 1 10
+
 This will calculate all pairwise scores for individuals 1 to 10.
 
 Run the script in two steps: 
