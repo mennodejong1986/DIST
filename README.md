@@ -1,9 +1,9 @@
 # Calculate pairwise distances
 
 This script allows to calculate sequence dissimilarity estimates between all pairs of individuals within a VCF-file.
-The input-file can be VCF-file containing variable sites only. 
-However, in order to scale the obtained estimates, it is important to know the total number of sites from which the VCF-file has been extracted. 
-The genome-wide distance is obtained using the formula: d = d_snps*n _snps/n_sites. 
+The input-file can be a VCF-file containing variable sites only. 
+However, in order to scale the obtained estimates, it is important to know the total number of sites from which the variable sites have been extracted. 
+The genome-wide distance can be obtained using the formula: d = d_snps*n _snps/n_sites. 
 
 For instance: say that you have gVCF-file with a total number of sites of 2Gb (monomorphic and polymorphic, but without indels). 
 Say furthermore that after selecting variable sites, you obtained a VCF-file containing 100Mb SNPs (biallelic AND multiallelic!).
@@ -36,3 +36,23 @@ IMPORTANT!! If running simulatenously, the flag convertdata should be set to FAL
 The script automatically avoids double calculations (i.e, i vs j, and j vs i) by only performing calculations if ( i < j && (i + j)%%2!=0) or ( i > j && (i + j)%%2==0)
 For instance, for individuals 1 and 5, the sum is even (6), and hence the script performs calculations for i=5 and j=1, but not for i=1 and j=5.
 In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script performs calculations for i=1 and j=6, but not for i=6 and j=1.     
+
+# Use distance estimates for population-genetic analyses in SambaR
+
+The obtained distance-estimates can be used for distance-based population-genetic analyses, such as tree reconstruction, pcoa-analyses and heterozygosity and Hudson Fst estimation.
+To do, make first a dummy dataset in SambaR:
+
+mydf	          <- read.table("popfile.txt",header=TRUE)			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
+mymat			      <- matrix(sample(c(0,1),nrow(mydf)*100,replace=TRUE),nrow=nrow(mydf),ncol=100)
+rownames(mymat)	<- mydf$name
+colnames(mymat)	<- paste("snp",c(1:100),sep="_")	
+mygl			      <- as.genlight(mymat)
+genlight2sambar(genlight_object="mygl",do_confirm=TRUE)
+mydf$pop		    <- NULL
+mydf$popcol		  <- NULL
+inds			      <- merge(inds,mydf,by="name")
+filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)
+
+Next, run the analyses:
+add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)
+calcdxy()
