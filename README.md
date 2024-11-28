@@ -5,10 +5,10 @@ The input-file can be a VCF-file containing variable sites only.
 However, in order to scale the obtained estimates, it is important to know the total number of sites from which the variable sites have been extracted. 
 The genome-wide distance can be obtained using the formula: d = d_snps*n _snps/n_sites. 
 
-For instance: say that you have gVCF-file with a total number of sites of 2Gb (monomorphic and polymorphic, but without indels). 
+For instance: say that you have a gVCF-file with a total number of sites of 2Gb (monomorphic and polymorphic, but without indels). 
 Say furthermore that after selecting variable sites, you obtained a VCF-file containing 100Mb SNPs (biallelic AND multiallelic!).
 The smaller VCF-file with SNP data is to be used as input for the VCF_calcdist script.
-Say that for two individuals, A and B, the obtained SNP distance (d_snps) is 0.2. 
+Say that for two individuals, A and B, the obtained SNP distance (d_snps) is 0.2. This will be the value in the output file of the VCF_calcdist.sh.
 The genome-wide distance is: d = 0.2*10^7/(2*10^9) = 0.001 = 0.1%.
 
 
