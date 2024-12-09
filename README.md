@@ -60,7 +60,9 @@ colnames(mymat)	<- paste("snp",c(1:100),sep="_")
 
 mygl			      <- as.genlight(mymat)
 
-genlight2sambar(genlight_object="mygl",do_confirm=TRUE)
+genlight2sambar(genlight_object="mygl",do_confirm=TRUE,popvector=as.character(mydf$pop),pop_order=NULL,colourvector=NULL)
+
+OPTIONAL: use pop_order flag to set the order of the populations in output plots, and use colourvector to define the colours of the populations (based on alphabetic order of the populations)
 
 mydf$pop		    <- NULL
 
