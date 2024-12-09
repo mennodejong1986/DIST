@@ -15,11 +15,11 @@ The genome-wide distance is: d = 0.2x(10^7)/(2x10^9) = 0.001 = 0.1%.
 # Usage
 Execute by typing, for example:
 
-dos2unix VCF_calcdist.sh
+*dos2unix VCF_calcdist.sh*
 
-chmod +x VCF_calcdist.sh
+*chmod +x VCF_calcdist.sh*
 
-./VCF_calcdist.sh 1 10
+*./VCF_calcdist.sh 1 10*
 
 This will calculate all pairwise scores for individuals 1 to 10.
 
@@ -33,9 +33,9 @@ line 76: ((: i = : syntax error: operand expected (error token is "= ")
 # Parallel usage
 To speed up the calculations, run simulatenously for subsets as such:
 
-./VCF_calcdist.sh 1 10 &		
+*./VCF_calcdist.sh 1 10 &*		
 
-./VCF_calcdist.sh 11 20 &
+*./VCF_calcdist.sh 11 20 &*
 
 etc.
 
@@ -50,30 +50,32 @@ In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script p
 The obtained distance-estimates can be used for distance-based population-genetic analyses, such as tree reconstruction, pcoa-analyses and heterozygosity and Hudson Fst estimation.
 To do, make first a dummy dataset in SambaR:
 
-mydf	          <- read.table("popfile.txt",header=TRUE)			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
+*mydf	          <- read.table("popfile.txt",header=TRUE)*			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
 
-mymat			      <- matrix(sample(c(0,1),nrow(mydf)*100,replace=TRUE),nrow=nrow(mydf),ncol=100)
+*mymat			      <- matrix(sample(c(0,1),nrow(mydf)\*100,replace=TRUE),nrow=nrow(mydf),ncol=100)*
 
-rownames(mymat)	<- mydf$name
+*rownames(mymat)	<- mydf$name*
 
-colnames(mymat)	<- paste("snp",c(1:100),sep="_")	
+*colnames(mymat)	<- paste("snp",c(1:100),sep="_")*	
 
-mygl			      <- as.genlight(mymat)
+*mygl			      <- as.genlight(mymat)*
 
-genlight2sambar(genlight_object="mygl",do_confirm=TRUE,popvector=as.character(mydf$pop),pop_order=NULL,colourvector=NULL)
+*genlight2sambar(genlight_object="mygl",do_confirm=TRUE,popvector=as.character(mydf$pop),pop_order=NULL,colourvector=NULL)*
 
 OPTIONAL: use pop_order flag to set the order of the populations in output plots, and use colourvector to define the colours of the populations (based on alphabetic order of the populations)
 
-mydf$pop		    <- NULL
+*mydf$pop		    <- NULL*
 
-mydf$popcol		  <- NULL
+*mydf$popcol		  <- NULL*
 
-inds			      <- merge(inds,mydf,by="name")
+*inds			      <- merge(inds,mydf,by="name")*
 
-filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)
+*filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)*
 
 Next, run the analyses:
 
-add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)
+*add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)*
 
-calcdxy()
+IMPORTANT: replace ntotalsites with the the correct number. See the explanation above.
+
+*calcdxy()*
