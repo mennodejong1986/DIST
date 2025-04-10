@@ -52,35 +52,24 @@ The combined output will be stored in the output file 'allvcfdist.txt'.
 # Species tree inference in SambaR
 
 The file 'allvcfdist.txt' can be as input for SambaR for species tree inference.
-To do so, first make a dummy dataset in SambaR:
+To do so, first create a dummy genlight object in R:
 
-*mydf	          <- read.table("popfile.txt",header=TRUE)*			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
+*source("https://github.com/mennodejong1986/SambaR/raw/master/SAMBAR_v1.xx.txt")* # replace xx with the correct version
+*getpackages()*
+*gldummy(popfile="popfile.txt")*   # popfile.txt should be a tab-separated file, which should contain two columns: name and pop; all names should correspond to the names in the file 'allvcfdist.txt'.
 
-*mymat			      <- matrix(sample(c(0,1),nrow(mydf)\*100,replace=TRUE),nrow=nrow(mydf),ncol=100)*
 
-*rownames(mymat)	<- mydf$name*
+Convert this genlight object into SambaR objects:
 
-*colnames(mymat)	<- paste("snp",c(1:100),sep="_")*	
-
-*mygl			      <- as.genlight(mymat)*
-
-*genlight2sambar(genlight_object="mygl",do_confirm=TRUE,popvector=as.character(mydf$pop),pop_order=NULL,colourvector=NULL)*
-
-OPTIONAL: use pop_order flag to set the order of the populations in output plots, and use colourvector to define the colours of the populations (based on alphabetic order of the populations)
-
-*mydf$pop		    <- NULL*
-
-*mydf$popcol		  <- NULL*
-
-*inds			      <- merge(inds,mydf,by="name")*
+*genlight2sambar(genlight_object="mygl",do_confirm=TRUE,popvector=as.character(inddf$pop),pop_order=NULL,colourvector=NULL)*
 
 *filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)*
 
-Import the file 'allvcfdist.txt' containing the pairwise distance estimates:
 
-*add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)*
+Next, add to SambaR's inds2 dataframe the information from the file 'allvcfdist.txt':
 
-IMPORTANT: replace ntotalsites with the the correct number. See the explanation above.
+*add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)*    # replace ntotalsites with the the correct number. See the explanation above.
+
 
 Next, run the analyses:
 
