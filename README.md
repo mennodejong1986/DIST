@@ -47,10 +47,12 @@ The script automatically avoids double calculations (i.e, i vs j, and j vs i) by
 For instance, for individuals 1 and 5, the sum is even (6), and hence the script performs calculations for i=5 and j=1, but not for i=1 and j=5.
 In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script performs calculations for i=1 and j=6, but not for i=6 and j=1.     
 
+The combined output will be stored in the output file 'allvcfdist.txt'.
+
 # Species tree inference in SambaR
 
-The obtained distance-estimates can be used for species tree inference in SambaR.
-To do, make first a dummy dataset in SambaR:
+The file 'allvcfdist.txt' can be as input for SambaR for species tree inference.
+To do so, first make a dummy dataset in SambaR:
 
 *mydf	          <- read.table("popfile.txt",header=TRUE)*			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
 
