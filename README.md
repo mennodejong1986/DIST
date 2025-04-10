@@ -76,10 +76,12 @@ OPTIONAL: use pop_order flag to set the order of the populations in output plots
 
 *filterdata(min_spacing=0,min_mac=1,dohefilter=FALSE)*
 
-Next, run the analyses:
+Import the file 'allvcfdist.txt' containing the pairwise distance estimates:
 
 *add2inds2(myfile="allvcfdist.txt",miss_filter=inds2$pmiss<=0.8,ntotalsites=2000000000)*
 
 IMPORTANT: replace ntotalsites with the the correct number. See the explanation above.
+
+Next, run the analyses:
 
 *runDIST()*
