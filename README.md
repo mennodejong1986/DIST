@@ -82,4 +82,4 @@ Next, run the analyses:
 
 IMPORTANT: replace ntotalsites with the the correct number. See the explanation above.
 
-*calcdxy()*
+*runDIST()*
