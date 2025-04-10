@@ -13,7 +13,6 @@ The smaller VCF-file with SNP data is to be used as input for the VCF_calcdist s
 Say that for two individuals, A and B, the obtained SNP distance (d_snps) is 0.2. This will be the value in the main output file, called 'allvcfdist.txt'.
 The genome-wide distance is: d = 0.2x(10^7)/(2x10^9) = 0.001 = 0.1%.
 
-
 # Usage
 Execute by typing, for example:
 
@@ -47,6 +46,7 @@ The script automatically avoids double calculations (i.e, i vs j, and j vs i) by
 For instance, for individuals 1 and 5, the sum is even (6), and hence the script performs calculations for i=5 and j=1, but not for i=1 and j=5.
 In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script performs calculations for i=1 and j=6, but not for i=6 and j=1.     
 
+As a rough estimation of computation time: a gVCF-file of 100 individuals and 50Mb variable sites can be processed within 8 hours, if using 25 parallel run (i.e., 4 individuals per run).     
 The combined output will be stored in the output file 'allvcfdist.txt'.
 
 # Species tree inference in SambaR
