@@ -55,7 +55,9 @@ The file 'allvcfdist.txt' can be as input for SambaR for species tree inference.
 To do so, first create a dummy genlight object in R:
 
 *source("https://github.com/mennodejong1986/SambaR/raw/master/SAMBAR_v1.xx.txt")* # replace xx with the correct version
+
 *getpackages()*
+
 *gldummy(popfile="popfile.txt")*   # popfile.txt should be a tab-separated file, which should contain two columns: name and pop; all names should correspond to the names in the file 'allvcfdist.txt'.
 
 
