@@ -1,6 +1,8 @@
-# Calculate pairwise distances
+# DIST: Distance-based Inference of Species Trees
 
-This script allows to calculate sequence dissimilarity estimates between all pairs of individuals within a VCF-file.
+DIST is a method to infer species trees from distance matrices containing genome-wide sequence dissimilarity estimates, E(p).
+This github-repository contains a Unix-script to calculate these E(p)-estimates for all pairs of individuals within an input VCF-file. 
+
 The input-file can be a VCF-file containing variable sites only. 
 However, in order to scale the obtained estimates, it is important to know the total number of sites from which the variable sites have been extracted. 
 The genome-wide distance can be obtained using the formula: d = d_snps*n _snps/n_sites. 
@@ -45,9 +47,9 @@ The script automatically avoids double calculations (i.e, i vs j, and j vs i) by
 For instance, for individuals 1 and 5, the sum is even (6), and hence the script performs calculations for i=5 and j=1, but not for i=1 and j=5.
 In contrast, for individuals 1 and 6, the sum is odd (7), and hence the script performs calculations for i=1 and j=6, but not for i=6 and j=1.     
 
-# Use distance estimates for population-genetic analyses
+# Species tree inference in SambaR
 
-The obtained distance-estimates can be used for distance-based population-genetic analyses, such as tree reconstruction, pcoa-analyses and heterozygosity and Hudson Fst estimation.
+The obtained distance-estimates can be used for species tree inference in SambaR.
 To do, make first a dummy dataset in SambaR:
 
 *mydf	          <- read.table("popfile.txt",header=TRUE)*			# specify here name of tab-separated file, which should contain two columns: name and pop; names should correspond to names in allvcfdist.txt file.
