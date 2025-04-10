@@ -1,7 +1,7 @@
 # DIST: Distance-based Inference of Species Trees
 
-DIST is a method to infer species trees from distance matrices containing genome-wide sequence dissimilarity estimates, E(p).
-This github-repository contains a Unix-script to calculate these E(p)-estimates for all pairs of individuals within an input VCF-file. 
+DIST is a method to infer species trees from distance matrices containing genome-wide sequence dissimilarity estimates.
+This github-repository contains a Unix-script to calculate these distance estimates for all pairs of individuals within an input VCF-file. 
 
 The input-file can be a VCF-file containing variable sites only. 
 However, in order to scale the obtained estimates, it is important to know the total number of sites from which the variable sites have been extracted. 
@@ -10,7 +10,7 @@ The genome-wide distance can be obtained using the formula: d = d_snps*n _snps/n
 For instance: say that you have a gVCF-file with a total number of sites of 2Gb (monomorphic and polymorphic, but without indels). 
 Say furthermore that after selecting variable sites, you obtained a VCF-file containing 100Mb SNPs (biallelic AND multiallelic!).
 The smaller VCF-file with SNP data is to be used as input for the VCF_calcdist script.
-Say that for two individuals, A and B, the obtained SNP distance (d_snps) is 0.2. This will be the value in the output file of the VCF_calcdist.sh.
+Say that for two individuals, A and B, the obtained SNP distance (d_snps) is 0.2. This will be the value in the main output file, called 'allvcfdist.txt'.
 The genome-wide distance is: d = 0.2x(10^7)/(2x10^9) = 0.001 = 0.1%.
 
 
