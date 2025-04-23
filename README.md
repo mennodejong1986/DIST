@@ -9,7 +9,7 @@ The workflow of DIST contains three steps:
 
 3. During the optional third step, gene flow edges are added to resolve cases of non-additivity. 
 
-This github-repository contains a Unix-script to perform the first step (1a): calculate E(p)-estimates for all pairs of individuals within an input VCF-file. 
+This github-repository contains a Unix-script to perform the first step: calculate E(p)-estimates for all pairs of individuals within an input VCF-file. 
 The input-file can be a VCF-file containing variable sites only. 
 However, in order to scale the obtained estimates, it is important to know the total number of sites from which the variable sites have been extracted. 
 The genome-wide distance can be obtained using the formula: d = d_snps*n _snps/n_sites. 
