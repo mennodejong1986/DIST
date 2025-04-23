@@ -3,7 +3,7 @@
 DIST is a method to infer species trees from distance matrices containing genome-wide sequence dissimilarity estimates.
 The workflow of DIST contains three steps:
 
-1a. DIST measures genetic distance for each pair of individuals in terms of mean pairwise sequence dissimilarity, E(p), preferably from an unbiased selection of monomorphic and polymorphic sites. 
+1a. DIST measures genetic distance for each pair of individuals in terms of mean pairwise sequence dissimilarity, E(p), preferably from an unbiased selection of monomorphic and polymorphic sites.
 
 1b. These distances are optionally depicted in a concatenation tree, traditionally known as 'tree of individuals'.
 
