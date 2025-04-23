@@ -58,7 +58,7 @@ The combined output will be stored in the output file 'allvcfdist.txt'.
 
 # Species tree inference in SambaR
 
-The file 'allvcfdist.txt' can be as input for SambaR for species tree inference.
+The file 'allvcfdist.txt' can be as input for SambaR for species tree inference (step 2 and 3).
 To do so, first create a dummy genlight object in R:
 
 *source("https://github.com/mennodejong1986/SambaR/raw/master/SAMBAR_v1.xx.txt")* # replace xx with the correct version
